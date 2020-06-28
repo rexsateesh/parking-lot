@@ -41,6 +41,24 @@ function Car() {
         this.parking.push({carNumber, slotNumber});
         return `Allocated slot number: ${slotNumber}`;
     }
+
+    this.leaveCar = (carNumber, totalHours) => {
+        // Parse to integer
+        const hours = parseInt(totalHours);
+        if (isNaN(hours)) {
+            return 'Hours must be in number format';        }
+
+        const carEntry = this.parking.filter(item => item != null && item.carNumber === carNumber);
+        if (carEntry.length === 0) {
+            return `Registration number ${carNumber} not found`;
+        }
+
+        // Charges
+        const charges = Math.round(hours > 4 ? hours * 8.33 : hours * 7.5);
+        
+        this.parking = this.parking.filter(item => item != null && item.carNumber != carNumber); // Remove car
+        return `Registration number ${carNumber} with Slot Number ${carEntry[0].slotNumber} is free with Charge ${charges}`;
+    }
 }
 
 module.exports = Car;
