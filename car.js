@@ -12,12 +12,12 @@ function Car() {
             return 'Capacity must be in number format';
         }
 
-        this.slots = Array.from(Array(cap), (_, i) => i + 1);
+        this.slots = Array.from(Array(cap), (_, i) => i + 1); // Creating slots
         return `Created parking lot with ${cap} slots`;
     }
 
     this.parkCar = (carNumber) => {
-        if (this.slots.length === 0) {
+        if (this.slots.length === 0) { // If slots not allocated
             return 'Unable to park a car. Make sure parking is alloted?';
         }
 
@@ -43,11 +43,12 @@ function Car() {
     }
 
     this.leaveCar = (carNumber, totalHours) => {
-        // Parse to integer
-        const hours = parseInt(totalHours);
+        const hours = parseInt(totalHours); // Parse to integer
         if (isNaN(hours)) {
-            return 'Hours must be in number format';        }
+            return 'Hours must be in number format';
+        }
 
+        // Checking and fetching car details from parking allocation
         const carEntry = this.parking.filter(item => item != null && item.carNumber === carNumber);
         if (carEntry.length === 0) {
             return `Registration number ${carNumber} not found`;
@@ -61,6 +62,7 @@ function Car() {
     }
 
     this.status = () => {
+        // Sorting cars by slot number
         this.parking.sort((a, b) => {
             return a.slotNumber > b.slotNumber ? 1 : -1;
         });
