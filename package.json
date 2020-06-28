@@ -1,0 +1,15 @@
+{
+  "name": "dkatalis",
+  "version": "1.0.0",
+  "description": "CLI",
+  "main": "car.js",
+  "scripts": {
+    "test": "mocha ./**/**.spec.js"
+  },
+  "author": "Sateesh Kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1"
+  }
+}
