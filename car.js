@@ -59,6 +59,20 @@ function Car() {
         this.parking = this.parking.filter(item => item != null && item.carNumber != carNumber); // Remove car
         return `Registration number ${carNumber} with Slot Number ${carEntry[0].slotNumber} is free with Charge ${charges}`;
     }
+
+    this.status = () => {
+        this.parking.sort((a, b) => {
+            return a.slotNumber > b.slotNumber ? 1 : -1;
+        });
+
+        let msg = 'Slot No.\tRegistration No.\n';
+
+        this.parking.forEach(item => {
+            msg = `${msg}${item.slotNumber}\t\t${item.carNumber}\n`;
+        });
+
+        return msg;
+    }
 }
 
 module.exports = Car;
